@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vakratunda Education Services</title>
+
+<style>
+:root{
+    --dark:#0f172a;
+    --dark2:#1e293b;
+    --gold:#facc15;
+    --light:#f8fafc;
+    --accent:#2563eb;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:var(--light);
+    color:#111;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,var(--dark),var(--dark2));
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+}
+header p{ color:var(--gold); }
+
+/* NAV */
+nav{
+    background:var(--dark2);
+    text-align:center;
+    padding:12px;
+    position:sticky;
+    top:0;
+}
+nav a{
+    color:white;
+    margin:0 12px;
+    text-decoration:none;
+    font-weight:500;
+}
+nav a:hover{ color:var(--gold); }
+
+/* SECTIONS */
+section{
+    background:white;
+    width:90%;
+    max-width:800px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:var(--dark2);
+    border-left:4px solid var(--gold);
+    padding-left:10px;
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+}
+.gallery div{
+    background:linear-gradient(135deg,var(--dark2),var(--dark));
+    color:white;
+    padding:30px 10px;
+    text-align:center;
+    border-radius:8px;
+    font-weight:600;
+}
+
+/* FORMS */
+label{
+    font-weight:600;
+    margin-top:12px;
+    display:block;
+}
+select,input,textarea{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-family:inherit;
+}
+textarea{ resize:none; }
+
+button{
+    margin-top:15px;
+    padding:10px;
+    width:100%;
+    background:var(--accent);
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:15px;
+}
+button:hover{ background:#1e40af; }
+
+.result{
+    margin-top:20px;
+    padding:15px;
+    background:#ecfeff;
+    border-left:5px solid var(--accent);
+    font-weight:600;
+}
+
+.success{
+    margin-top:15px;
+    padding:12px;
+    background:#dcfce7;
+    border-left:5px solid #16a34a;
+    display:none;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:15px;
+    font-size:13px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Vakratunda Education Services</h1>
+    <p>One Stop Solution for Students</p>
+</header>
+
+<nav>
+    <a href="#intro">Introduction</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#calculator">Cost Estimator</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="intro">
+<h2>Introduction</h2>
+<p>
+This website is developed using HTML, CSS, and JavaScript to provide information
+about student services and calculate service costs using client-side scripting.
+</p>
+</section>
+
+<section id="about">
+<h2>About Us</h2>
+<p>
+Vakratunda Education Services offers printing, documentation, and student-support
+services such as black book printing, project reports, resume printing, and
+online form assistance.
+</p>
+</section>
+
+<section id="gallery">
+<h2>Gallery</h2>
+<div class="gallery">
+    <div>Black Book</div>
+    <div>Project Report</div>
+    <div>Assignments</div>
+    <div>Notes Printing</div>
+    <div>Form Filling</div>
+    <div>Resume Print</div>
+    <div>Scanning</div>
+    <div>Xerox</div>
+</div>
+</section>
+
+<section id="calculator">
+<h2>Live Service Cost Estimator</h2>
+
+<label>Service Type</label>
+<select id="service" onchange="updatePrice()">
+    <option value="">-- Select Service --</option>
+    <option value="blackbook">Black Book Printing & Binding</option>
+    <option value="project">Project Report Printing</option>
+    <option value="assignment">Assignments & Practical File Printing</option>
+    <option value="notes">Notes Printing</option>
+    <option value="form">Online Form Filling</option>
+    <option value="resume">Resume / CV Printing</option>
+    <option value="scan">Document Scanning & Upload</option>
+    <option value="xerox">Photocopy / Xerox</option>
+</select>
+
+<label>Number of Pages</label>
+<input type="number" id="pages" placeholder="Enter pages" oninput="updatePrice()">
+
+<label>Print Type</label>
+<select id="printType" onchange="updatePrice()">
+    <option value="bw">Black & White</option>
+    <option value="color">Color</option>
+</select>
+
+<div class="result" id="result">Total Cost: ₹0</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+
+<label>Your Name</label>
+<input type="text" id="cname">
+
+<label>Email</label>
+<input type="email" id="cemail">
+
+<label>Service Required</label>
+<select id="cservice">
+    <option value="">-- Select Service --</option>
+    <option>Black Book Printing & Binding</option>
+    <option>Project Report Printing</option>
+    <option>Assignments & Practical File Printing</option>
+    <option>Notes Printing</option>
+    <option>Online Form Filling</option>
+    <option>Resume / CV Printing</option>
+    <option>Document Scanning & Upload</option>
+    <option>Photocopy / Xerox</option>
+</select>
+
+<label>Number of Pages</label>
+<input type="number" id="cpages">
+
+<label>Print Type</label>
+<select id="ctype">
+    <option value="">-- Select Type --</option>
+    <option>Black & White</option>
+    <option>Color</option>
+    <option>Bond Paper (Black Book)</option>
+</select>
+
+<label>Message</label>
+<textarea id="cmsg" rows="4"></textarea>
+
+<button onclick="submitContact()">Submit</button>
+
+<div class="success" id="successMsg">
+    Thank you! Your request has been submitted.
+</div>
+</section>
+
+<footer>
+© Vakratunda Education Services
+</footer>
+
+<script>
+function updatePrice(){
+    let service=document.getElementById("service").value;
+    let pages=Number(document.getElementById("pages").value);
+    let printType=document.getElementById("printType");
+    let total=0;
+
+    if(service===""){
+        result.innerHTML="Total Cost: ₹0";
+        return;
+    }
+
+    if(service==="blackbook"){
+        printType.value="bw";
+        printType.disabled=true;
+        if(pages>0) total=(pages*4)+50;
+    }
+    else if(service==="form"){
+        printType.disabled=true;
+        total=20;
+    }
+    else if(service==="resume"){
+        printType.disabled=true;
+        total=pages*5;
+    }
+    else if(service==="scan"){
+        printType.disabled=true;
+        total=pages*10;
+    }
+    else{
+        printType.disabled=false;
+        let rate=(printType.value==="bw")?2:3;
+        total=pages*rate;
+        if(service==="project") total+=30;
+    }
+
+    result.innerHTML="Total Cost: ₹"+total;
+}
+
+function submitContact(){
+    if(cname.value===""||cemail.value===""||cservice.value===""){
+        alert("Please fill required details");
+        return;
+    }
+    successMsg.style.display="block";
+    cname.value=cemail.value=cmsg.value=cpages.value="";
+    cservice.value=ctype.value="";
+}
+</script>
+
+</body>
+</html>
