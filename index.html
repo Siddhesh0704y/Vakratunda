@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Vakratunda Education Services</title>
+<title>Vakratunda Online Services</title>
 
 <style>
 :root{
@@ -137,7 +137,7 @@ footer{
 <body>
 
 <header>
-    <h1>Vakratunda Education Services</h1>
+    <h1>Vakratunda Online Services</h1>
     <p>One Stop Solution for Students</p>
 </header>
 
@@ -273,8 +273,9 @@ function updatePrice(){
         if(pages>0) total=(pages*4)+50;
     }
     else if(service==="form"){
+        pages.disable=true;
         printType.disabled=true;
-        total=20;
+        total=50;
     }
     else if(service==="resume"){
         printType.disabled=true;
